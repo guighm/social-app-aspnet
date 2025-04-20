@@ -1,0 +1,15 @@
+﻿volumes:
+  social_app_data: {}
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql1
+    hostname: sql1
+    ports:
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "<YourStrong@Passw0rd>"
+    volumes:
+      - social_app_data:/var/opt/mssql
