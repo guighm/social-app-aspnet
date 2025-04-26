@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace dotnet_backend.Migrations
 {
     /// <inheritdoc />
@@ -137,74 +135,6 @@ namespace dotnet_backend.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "Id", "AvatarUrl", "Bio", "CreatedAt", "Email", "Name", "Password", "UpdatedAt", "Username" },
-                values: new object[,]
-                {
-                    { 1L, "UrlDoUsuario1", "Sou o Usuário 1", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user1@email.com", "Usuário 1", "123", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user1" },
-                    { 2L, "UrlDoUsuario2", "Sou o Usuário 2", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user2@email.com", "Usuário 2", "123", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user2" },
-                    { 3L, "UrlDoUsuario3", "Sou o Usuário 3", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user3@email.com", "Usuário 3", "123", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user3" },
-                    { 4L, "UrlDoUsuario4", "Sou o Usuário 4", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user4@email.com", "Usuário 4", "123", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user4" },
-                    { 5L, "UrlDoUsuario5", "Sou o Usuário 5", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user5@email.com", "Usuário 5", "123", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user5" },
-                    { 6L, "UrlDoUsuario6", "Sou o Usuário 6", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user6@email.com", "Usuário 6", "123", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user6" },
-                    { 7L, "UrlDoUsuario7", "Sou o Usuário 7", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user7@email.com", "Usuário 7", "123", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user7" },
-                    { 8L, "UrlDoUsuario8", "Sou o Usuário 8", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user8@email.com", "Usuário 8", "123", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user8" },
-                    { 9L, "UrlDoUsuario9", "Sou o Usuário 9", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user9@email.com", "Usuário 9", "123", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user9" },
-                    { 10L, "UrlDoUsuario10", "Sou o Usuário 10", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user10@email.com", "Usuário 10", "123", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "user10" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Posts",
-                columns: new[] { "Id", "Content", "CreatedAt", "UpdatedAt", "UserId" },
-                values: new object[,]
-                {
-                    { 1L, "Post 1", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L },
-                    { 2L, "Post 2", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L },
-                    { 3L, "Post 3", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L },
-                    { 4L, "Post 4", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L },
-                    { 5L, "Post 5", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L },
-                    { 6L, "Post 6", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L },
-                    { 7L, "Post 7", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L },
-                    { 8L, "Post 8", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L },
-                    { 9L, "Post 9", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L },
-                    { 10L, "Post 10", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Comments",
-                columns: new[] { "Id", "Content", "CreatedAt", "PostId", "UpdatedAt", "UserId" },
-                values: new object[,]
-                {
-                    { 1L, "Comentário 1", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L },
-                    { 2L, "Comentário 2", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L },
-                    { 3L, "Comentário 3", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L },
-                    { 4L, "Comentário 4", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L },
-                    { 5L, "Comentário 5", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L },
-                    { 6L, "Comentário 6", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L },
-                    { 7L, "Comentário 7", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L },
-                    { 8L, "Comentário 8", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L },
-                    { 9L, "Comentário 9", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L },
-                    { 10L, "Comentário 10", new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Likes",
-                columns: new[] { "Id", "CreatedAt", "PostId", "UserId" },
-                values: new object[,]
-                {
-                    { 1L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 2L },
-                    { 2L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 3L },
-                    { 3L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 2L },
-                    { 4L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 3L },
-                    { 5L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 2L },
-                    { 6L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 3L },
-                    { 7L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 2L },
-                    { 8L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 3L },
-                    { 9L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 2L },
-                    { 10L, new DateTime(2025, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 3L }
                 });
 
             migrationBuilder.CreateIndex(

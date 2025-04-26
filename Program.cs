@@ -1,40 +1,24 @@
-using dotnet_backend.Data;
-using dotnet_backend.Repositories;
-using dotnet_backend.Services;
-using Microsoft.EntityFrameworkCore;
+using dotnet_backend.Extensions;
+
+// Builder 
 
 var builder = WebApplication.CreateBuilder(args);
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddScoped<IPostRepository, PostRepository>();
-builder.Services.AddScoped<IPostService, PostService>();
+const string policyName = "AllowAll";
 
-builder.Services.AddScoped<ILikeRepository, LikeRepository>();
-builder.Services.AddScoped<ILikeService, LikeService>();
-
-builder.Services.AddScoped<ICommentRepository, CommentRepository>();
-builder.Services.AddScoped<ICommentService, CommentService>();
-
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.DependencyInjection();
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<AppDbContext>(opt =>
-{
-    opt.UseSqlServer(connectionString);
-});
+
+builder.Services.AddDbContextConfiguration(connectionString);
 
 builder.Services.AddOpenApi();
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", policy =>
-    {
-        policy.AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader();
-    });
-});
+builder.Services.AddCorsPolicy(policyName);
+
+// App
 
 var app = builder.Build();
 
@@ -43,14 +27,12 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();
-}
+await app.MigrateAndSeedAsync();
 
-app.UseCors("AllowAll");
+app.UseHttpsRedirection();
+
+app.UseCors(policyName);
 
 app.MapControllers();
-app.UseHttpsRedirection();
+
 app.Run();
